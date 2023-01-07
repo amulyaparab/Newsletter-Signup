@@ -30,7 +30,7 @@ app.post("/", function (req, res) {
     email: email,
   };
   const run = async () => {
-    const response = await client.lists.batchListMembers(listId, {
+    const response = await client.lists.addListMember(listId, {
       email_address: subscribingUser.email,
       status: "subscribed",
       merge_fields: {
