@@ -5,7 +5,8 @@ const bodyParser = require("body-parser");
 const client = require("@mailchimp/mailchimp_marketing");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
-
+const apiKey = config.apiKey;
+const server = config.server;
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/index.html");
 });
@@ -15,15 +16,15 @@ app.listen(process.env.PORT || 3000, function () {
 });
 
 client.setConfig({
-  apiKey: "d49485567b93e57d4dc412bb073154ee-us21",
-  server: "us21",
+  apiKey: apiKey,
+  server: server,
 });
 
 app.post("/", function (req, res) {
   const fName = req.body.firstName;
   const lName = req.body.lastName;
   const email = req.body.emailAddress;
-  const listId = "244c11a956";
+  const listId = config.listID;
   const subscribingUser = {
     firstName: fName,
     lastName: lName,
@@ -51,6 +52,3 @@ app.post("/", function (req, res) {
 app.post("/failure", function (req, res) {
   res.redirect("/");
 });
-
-// Api key - 8626eb2edce9ab20f0b1e2999b270e94-us21
-// Audience ID - 244c11a956
