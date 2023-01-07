@@ -15,7 +15,7 @@ app.listen(process.env.PORT || 3000, function () {
 });
 
 client.setConfig({
-  apiKey: "8626eb2edce9ab20f0b1e2999b270e94-us21",
+  apiKey: "d49485567b93e57d4dc412bb073154ee-us21",
   server: "us21",
 });
 
